@@ -1,0 +1,39 @@
+<div class="h-screen flex flex-col bg-color">
+   <div class="bg-color2 shadow p-3 text-center flex justify-between items-center">
+      <div class="flex items-center">
+         <img class="w-10" src="/icons/man.png">
+         <p class="font-semibold text-white mx-2 text-lg">{{username}}</p>
+      </div>
+      <h1 class="text-xl text-white">
+         Wolcome to Family Chat
+      </h1>
+      <a href="/exit" class="p-2 text-white rounded-md bg-red-500">Chiqish</a>
+   </div>
+
+   <div class="grow flex flex-col justify-center items-center overflow-hidden ">
+      <div class="bg-color2 flex flex-col items-start overflow-scroll overflow-x-hidden w-3/4 my-5 shadow rounded p-3 grow">
+         {{#each messages}}
+         <div
+            class="rounded-sm p-2 flex  bg-color3 my-1 flex-col gap-1 text-black {{#if own}} bg-blue-400 self-end {{/if}}">
+            {{#if own}}
+            <span class="font-bold text-color">Siz</span>
+            {{else}}
+            <span class="font-bold text-slate-500">{{username}}</span>
+            {{/if}}
+            <span class="text-white">{{message}}</span>
+         </div>
+         {{/each}}
+      </div>
+   </div>
+
+   <form action="/message" method="post">
+      <div class="w-2/3 mx-auto flex gap-3 pb-3">
+         <input type="text" name="message" class="border grow border-slate-400 bg-color2 text-white rounded p-2"
+            placeholder="Write a message..." autocomplete="off" minlength="1">
+         <div class="p-2 bg-color2 rounded text-white flex border-slate-400 border">
+            <button class="mx-1">Send</button>
+            <img class="w-5" src="/icons/telegram.png">
+         </div>
+      </div>
+   </form>
+</div>
